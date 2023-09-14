@@ -3,7 +3,7 @@
 </div>
 
 <nav class="green-nav navbar navbar-expand-lg navbar-dark">
-  <div class="container-fluid"><a id="homeName" href="./" class="navbar-brand">newgradnomad.com</a>
+  <div class="container-fluid"><a id="homeNameNavBar" href="./" class="navbar-brand">newgradnomad.com</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -11,10 +11,10 @@
     <div class="container-fluid">
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <div class="ms-auto navbar-nav">
-          <a class="nav-links nav-link" id="PostAJob" href="./pages/PostAJob">
+          <a class="nav-links nav-link" id="PostAJobNavBar" href="./pages/PostAJob">
             <button type="button" class="button btn btn-primary"><strong>Post a Job</strong></button>
           </a>
-          <a class="nav-links nav-link" id="home" href="./">
+          <a class="nav-links nav-link" id="homeNavBar" href="./">
             <button type="button" class="button-hide btn btn-primary"><strong>Home</strong></button>
           </a>
           <!-- <div class="button-hide nav-links mt-auto mb-auto show dropdown">
@@ -24,7 +24,7 @@
               <a data-bs-toggle="modal" data-bs-target="#newsletterModal" class="nav-links dropdown-item"><button type="button" class="button-hide btn btn-primary"><strong>Newsletter</strong></button></a>
             </div>
           </div> -->
-          <a class="nav-links nav-link" id="about" href="./pages/about">
+          <a class="nav-links nav-link" id="aboutNavBar" href="./pages/about">
             <button type="button" class="button-hide btn btn-primary"><strong>About</strong></button>
           </a>
         </div>
@@ -36,10 +36,10 @@
   var loc = window.location.pathname;
   var dir = loc.substring(0, loc.lastIndexOf("/"));
   if (dir.includes("pages")) {
-    document.getElementById("homeName").setAttribute("href", "../");
-    document.getElementById("PostAJob").setAttribute("href", "./PostAJob");
-    document.getElementById("home").setAttribute("href", "../");
-    document.getElementById("about").setAttribute("href", "./about");
+    document.getElementById("homeNameNavBar").setAttribute("href", "../");
+    document.getElementById("PostAJobNavBar").setAttribute("href", "./PostAJob");
+    document.getElementById("homeNavBar").setAttribute("href", "../");
+    document.getElementById("aboutNavBar").setAttribute("href", "./about");
   }
 </script>
 

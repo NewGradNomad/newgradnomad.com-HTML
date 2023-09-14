@@ -4,39 +4,39 @@
     <div class="row px-0">
       <div class="col px-0">
         <h6 class="mx-2 my-3">Employers</h6>
-        <a id="FAQEmployers" href="./pages/FAQEmployers" class="links">
+        <a id="FAQEmployersFooterLink" href="./pages/FAQEmployers" class="links">
           <p><small>FAQs</small></p>
         </a>
-        <a href="" class="links">
+        <a id="PostAJobFooterLink" href="./pages/PostAJob" class="links">
           <p><small>Post a Job</small></p>
         </a>
-        <a href="" class="links">
+        <a id="eContactFooterLink" href="./pages/contact" class="links">
           <p><small>Contact Us</small></p>
         </a>
       </div>
       <div class="vr px-0"></div>
       <div class="col px-0">
         <h6 class="mx-2 my-3">Job Seekers</h6>
-        <a href="" class="links">
+        <a id="JobSeekersFooterLink" href="./" class="links">
           <p><small>Job Seekers</small></p>
         </a>
-        <a href="" class="links">
+        <a id="FAQJobSeekersFooterLink" href="./pages/FAQJobSeekers" class="links">
           <p><small>FAQs</small></p>
         </a>
-        <a href="" class="links">
+        <a id="sContactFooterLink" href="./pages/contact" class="links">
           <p><small>Contact Us</small></p>
         </a>
       </div>
       <div class="vr px-0"></div>
       <div class="col px-0">
         <h6 class="mx-2 my-3">NewGradNomad</h6>
-        <a href="" class="links">
+        <a id="aboutFooterLink" href="./pages/about" class="links">
           <p><small>About Us</small></p>
         </a>
-        <a href="" class="links">
+        <a id="ngnContactFooterLink" href="./pages/contact" class="links">
           <p><small>Customer Support</small></p>
         </a>
-        <a href="" class="links">
+        <a id="legalFooterLink" href="./pages/legal" class="links">
           <p><small>Legal</small></p>
         </a>
         <br>
@@ -45,9 +45,14 @@
   </div>
 </div>
 <script>
+  var linkNames = ["FAQEmployersFooterLink", "PostAJobFooterLink", "aboutFooterLink", "FAQJobSeekersFooterLink", "eContactFooterLink", "sContactFooterLink", "ngnContactFooterLink", "legalFooterLink", "JobSeekersFooterLink"];
   var loc = window.location.pathname;
   var dir = loc.substring(0, loc.lastIndexOf("/"));
   if (dir.includes("pages")) {
-    document.getElementById("FAQEmployers").setAttribute("href", "./FAQEmployers");
+    for (var currentLink of linkNames) {
+      var currentPath = document.getElementById(currentLink).getAttribute("href");
+      var newPath = "." + currentPath;
+      document.getElementById(currentLink).setAttribute("href", newPath);
+    }
   }
 </script>
