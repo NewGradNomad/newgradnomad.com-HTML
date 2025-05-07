@@ -28,9 +28,6 @@ session_start();
 </head>
 
 <body>
-  <div class="alert alert-danger mb-0 text-center fs-7" role="alert">
-    <b>DO NOT use real cards or any personal information at checkout, this is against Stripe's TOS in test mode.<br> Use stripe test card: 4242424242424242 04/24 024</b>
-  </div>
   <div id="navbar"></div>
   <?php
   if (!empty($_SESSION['missingInput']) && $_SESSION['missingInput']) {

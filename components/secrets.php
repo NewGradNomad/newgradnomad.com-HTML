@@ -5,4 +5,4 @@
 // This is a public sample test API key.
 // Don’t submit any personally identifiable information in requests made with this key.
 // Sign in to see your own test API key embedded in code samples.
-$stripeSecretKey = 'sk_test_4eC39HqLyjWDarjtT1zdp7dc';
+$stripeSecretKey = 'sk_test_BQokikJOvBiI2HlWgH4olfQ2';

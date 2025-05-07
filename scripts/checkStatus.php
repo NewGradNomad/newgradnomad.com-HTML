@@ -18,6 +18,32 @@ try {
   $session = $stripe->checkout->sessions->retrieve($jsonObj->session_id);
 
   if (!empty($_SESSION['listingData'])) {
+    // Define expected columns and their corresponding session data indices
+    $columns = [
+      'listingNumber' => 0,
+      'companyName' => 1,
+      'positionName' => 2,
+      'positionType' => 3,
+      'primaryTag' => 4,
+      'keywords' => 5,
+      'support' => 6,
+      'pin' => 7,
+      'appURL' => 8,
+      'appEmail' => 9,
+      'combinedSalaryRange' => 10,
+      'jobDesc' => 11,
+      'date' => 12,
+      'paymentStatus' => 13
+    ];
+
+    // Validate required fields
+    foreach ($columns as $column => $index) {
+      if (!isset($_SESSION['listingData'][$index]) || empty($_SESSION['listingData'][$index])) {
+        throw new Exception("Missing required field: {$column}");
+      }
+    }
+
+    // Prepare the query with bindParam
     $query = $db->prepare("INSERT INTO jobListings VALUES (:listingNumber, :companyName, :positionName, :positionType, :primaryTag, :keywords, :support, :pin, :appURL, :appEmail, :combinedSalaryRange, :jobDesc, :date, :paymentStatus)");
     $query->bindParam(':listingNumber', $_SESSION['listingData'][0]);
     $query->bindParam(':companyName', $_SESSION['listingData'][1]);
@@ -33,6 +59,8 @@ try {
     $query->bindParam(':jobDesc', $_SESSION['listingData'][11]);
     $query->bindParam(':date', $_SESSION['listingData'][12]);
     $query->bindParam(':paymentStatus', $_SESSION['listingData'][13]);
+
+    // Execute the query
     if ($query->execute()) {
       $_SESSION['listingSuccess'] = true;
     } else {
@@ -42,14 +70,13 @@ try {
       exit();
     }
   }
+
   //closes database connection
   $db = null;
   $query = null;
   $_SESSION['listingNumber'] = null;
   $_SESSION['orderTotal'] = null;
   $_SESSION['listingData'] = null;
-  //exit();
-
 
   echo json_encode(['status' => $session->status, 'customer_email' => $session->customer_details->email]);
   http_response_code(200);
